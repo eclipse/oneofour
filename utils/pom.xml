@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.eclipse.neoscada</groupId>
-    <artifactId>org.eclipse.neoscada-parent</artifactId>
+    <groupId>org.eclipse.oneofour</groupId>
+    <artifactId>org.eclipse.oneofour-parent</artifactId>
     <version>0.5.0-SNAPSHOT</version>
   </parent>
 
-  <name>/utils/org.eclipse.neoscada.utils-parent</name>
-  <artifactId>org.eclipse.neoscada.utils-parent</artifactId>
+  <name>/utils/org.eclipse.oneofour.utils-parent</name>
+  <artifactId>org.eclipse.oneofour.utils-parent</artifactId>
 
   <packaging>pom</packaging>
 
