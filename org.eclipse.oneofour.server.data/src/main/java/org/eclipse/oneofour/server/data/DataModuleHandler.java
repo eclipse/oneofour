@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.MoreExecutors;
 
 import io.netty.channel.ChannelHandlerContext;
 
@@ -218,7 +219,7 @@ public class DataModuleHandler extends AbstractModuleHandler
                     // ... now they have all been sent
                     ctx.writeAndFlush ( DataTransmissionMessage.CONFIRM_STOP );
                 }
-            } );
+            }, MoreExecutors.directExecutor() );
         }
     }
 
@@ -251,7 +252,7 @@ public class DataModuleHandler extends AbstractModuleHandler
                 {
                     handleReadFailure ( header, address, t );
                 }
-            } );
+            }, MoreExecutors.directExecutor() );
         }
         else
         {
