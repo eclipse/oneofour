@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>/org.eclipse.neoscada-parent</name>
+
+	<groupId>org.eclipse.neoscada</groupId>
+	<artifactId>org.eclipse.neoscada-parent</artifactId>
+	<version>0.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<organization>
+		<name>Eclipse NeoSCADA Project</name>
+	</organization>
+
+	<scm>
+		<connection>scm:git:git://github.com/eclipse/neoscada.git</connection>
+		<developerConnection>scm:git:ssh://github.com:eclipse/neoscada.git</developerConnection>
+		<url>https://github.com/eclipse/neoscada/tree/newbuild</url>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<tycho.version>1.1.0</tycho.version>
+		<tycho.extras.version>1.1.0</tycho.extras.version>
+		<tycho.scmUrl>scm:git:git://github.com/eclipse/neoscada.git</tycho.scmUrl>
+
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<buildTimestamp>${maven.build.timestamp}</buildTimestamp>
+		<reactorBuildTimestampProperty>${maven.build.timestamp}</reactorBuildTimestampProperty>
+
+		<release.buildType>N</release.buildType>
+		<release.buildTypeLong>nightly</release.buildTypeLong>
+		<release.major.minor>0.5</release.major.minor>
+		<release.micro>0</release.micro>
+		<release.fullVersion>${release.major.minor}.${release.micro}</release.fullVersion>
+		<p2tom2.version>0.5.0</p2tom2.version>
+	</properties>
+
+	<modules>
+		<module>releng/org.eclipse.neoscada.target</module>
+		<module>releng/org.eclipse.neoscada.buildinfo</module>
+		<module>external</module>
+		<module>utils</module>
+		<module>protocols</module>
+		<module>base</module>
+		<module>chart</module>
+		<module>core</module>
+		<module>hmi</module>
+		<module>ide</module>
+		<module>deploy</module>
+
+		<module>releng/org.eclipse.neoscada.releng.publish</module>
+	</modules>
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-director-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+				<!-- <plugin> <groupId>org.eclipse.tycho.extras</groupId> <artifactId>tycho-document-bundle-plugin</artifactId> 
+					<version>${tycho.extras.version}</version> </plugin> -->
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-source-feature-plugin</artifactId>
+					<version>${tycho.extras.version}</version>
+					<configuration>
+						<labelSuffix> (Source)</labelSuffix>
+						<excludes>
+							<feature id="org.eclipse.license" />
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-p2-extras-plugin</artifactId>
+					<version>${tycho.extras.version}</version>
+				</plugin>
+				<plugin>
+					<artifactId>jdeb</artifactId>
+					<groupId>org.vafer</groupId>
+					<version>1.5</version>
+				</plugin>
+				<plugin>
+					<groupId>de.dentrassi.maven</groupId>
+					<artifactId>rpm</artifactId>
+					<version>0.10.2</version>
+				</plugin>
+				<plugin>
+					<groupId>de.dentrassi.build</groupId>
+					<artifactId>apt-repo</artifactId>
+					<version>0.0.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.8</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>1.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmavenplus</groupId>
+					<artifactId>gmavenplus-plugin</artifactId>
+					<version>1.6.1</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.groovy</groupId>
+							<artifactId>groovy-all</artifactId>
+							<version>2.5.0</version>
+							<scope>runtime</scope>
+							<type>pom</type>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.neoscada</groupId>
+							<artifactId>org.eclipse.neoscada.target</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-buildtimestamp-jgit</artifactId>
+						<version>${tycho.extras.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<timestampProvider>jgit</timestampProvider>
+					<jgit.ignore>
+						pom.xml
+					</jgit.ignore>
+					<!-- FIXME: leave this in until new build is finished, then remove -->
+					<jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+
+			<activation>
+				<property>
+					<name>!env.CI</name>
+				</property>
+			</activation>
+
+			<properties>
+				<tmp.target.path>${user.home}/.neoscada/b/tmp</tmp.target.path>
+				<publish.target.path>${user.home}/.neoscada/b/publish</publish.target.path>
+				<assemble.target.path>${user.home}/.neoscada/b/assemble</assemble.target.path>
+				<local.proxy.host></local.proxy.host>
+				<local.proxy.port></local.proxy.port>
+			</properties>
+
+		</profile>
+
+		<profile>
+			<id>travis</id>
+
+			<activation>
+				<property>
+					<name>env.CI</name>
+					<value>TRAVIS</value>
+				</property>
+			</activation>
+
+			<properties>
+				<tmp.target.path>${java.io.tmpdir}/neoscada/tmp</tmp.target.path>
+				<publish.target.path>${java.io.tmpdir}/neoscada/publish</publish.target.path>
+				<assemble.target.path>${java.io.tmpdir}/neoscada/assemble</assemble.target.path>
+				<local.proxy.host></local.proxy.host>
+				<local.proxy.port></local.proxy.port>
+			</properties>
+
+		</profile>
+
+		<profile>
+			<id>jenkins</id>
+
+			<activation>
+				<property>
+					<name>env.CI</name>
+					<value>JENKINS</value>
+				</property>
+			</activation>
+
+			<properties>
+				<tmp.target.path>${env.WORKSPACE}/b/tmp</tmp.target.path>
+				<publish.target.path>/home/data/httpd/download.eclipse.org/eclipsescada</publish.target.path>
+				<assemble.target.path>${env.WORKSPACE}/b/assemble</assemble.target.path>
+				<local.proxy.host>proxy.eclipse.org</local.proxy.host>
+				<local.proxy.port>9898</local.proxy.port>
+			</properties>
+
+		</profile>
+	</profiles>
+
+</project>
