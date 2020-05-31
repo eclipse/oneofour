@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Copyright (c) 2006, 2010 TH4 SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
@@ -18,7 +18,7 @@ import java.beans.PropertyChangeSupport;
  * An abstract base class for property change support. Derive your class from
  * this one if you
  * would like to add default property change support
- * 
+ *
  * @author Jens Reimann
  */
 public class AbstractPropertyChange

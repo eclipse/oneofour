@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Copyright (c) 2006, 2010 TH4 SYSTEMS GmbH and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * http://www.eclipse.org/legal/epl-v20.html
  *
  * Contributors:
  *     TH4 SYSTEMS GmbH - initial API and implementation
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 /**
  * A future that never has to run since the result is already known
- * 
+ *
  * @author Jens Reimann
  * @param <T>
  *            the type of the future
