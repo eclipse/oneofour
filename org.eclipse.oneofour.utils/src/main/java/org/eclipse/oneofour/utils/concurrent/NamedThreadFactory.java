@@ -20,8 +20,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * use guava instead
- * 
- * @author Juergen Rose <juergen.rose@ibh-systems.com>
+ *
+ * @author Juergen Rose (juergen.rose@ibh-systems.com)
  */
 @Deprecated
 public class NamedThreadFactory implements ThreadFactory

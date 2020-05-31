@@ -25,7 +25,7 @@ package org.eclipse.oneofour.asdu.types;
  * </p>
  * <p>
  * Since the {@link Causes} class caches the object instances internally, causes
- * can be compared either by using {@link #equals(Object)} or their instance.
+ * can be compared either by using {@link Object#equals} or their instance.
  * </p>
  */
 public interface Cause

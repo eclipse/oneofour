@@ -455,13 +455,6 @@ public class DataModuleMessageSource implements MessageSource
 
     /**
      * Start the process of interrogation
-     *
-     * @param asduAddress
-     * @param causeOfTransmission
-     * @param qualifierOfInterrogation
-     * @return the cause of transmission expected for updates during the
-     *         interrogation (station, group, ...). If it is <code>null</code>
-     *         the interrogation request was simply ignored.
      */
     public void startInterrogation ( final InterrogationCommand msg )
     {

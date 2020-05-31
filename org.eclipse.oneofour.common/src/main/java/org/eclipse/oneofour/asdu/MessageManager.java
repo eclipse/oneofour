@@ -102,7 +102,7 @@ public class MessageManager
      * A map of registered codecs
      */
     /*
-     * TODO: this could also be an array in order to improve performance. We only have 256 * 2 codec possibilities. 
+     * TODO: this could also be an array in order to improve performance. We only have 256 * 2 codec possibilities.
      */
     private final Map<MessageTypeId, MessageCodec> codecs = new ConcurrentHashMap<> ();
 
@@ -209,26 +209,20 @@ public class MessageManager
      * </p>
      * <p>
      * The message class must:
-     * <ul>
-     * <li>Provide a static method with the signature :
-     * <code>public static T parse ( ProtocolOptions, byte, ASDUHeader, ByteBuf )</code>
-     * </li>
-     * <li>Provide a non-static method with the signature :
-     * <code>public void encode ( ProtocolOptions, ByteBuf )</code></li>
-     * </ul>
+     * Provide a static method with the signature:
+     * {$code public static T parse ( ProtocolOptions, byte, ASDUHeader, ByteBuf )}
+     * Provide a non-static method with the signature:
+     * {$code public void encode ( ProtocolOptions, ByteBuf )}
      * </p>
      * <p>
      * In addition the class should implement the following interfaces
-     * <dl>
-     * <dt>{@link Encodeable}</dt>
-     * <dd>Providing an interface for the required
-     * {@link Encodeable#encode(ProtocolOptions, ByteBuf)} method.</dd>
-     * <dt>{@link Dumpable}</dt>
-     * <dd>In order to provide a common way to dump the message structure to
-     * some log</dd>
-     * </dl>
+     * {@link Encodeable}
+     * Providing an interface for the required
+     * {@link Encodeable#encode(ProtocolOptions, ByteBuf)} method.
+     * {@link Dumpable}
+     * In order to provide a common way to dump the message structure to some log
      * </p>
-     * 
+     *
      * @param clazz
      *            the message class to register
      */

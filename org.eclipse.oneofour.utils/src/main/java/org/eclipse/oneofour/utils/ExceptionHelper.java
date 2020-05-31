@@ -19,7 +19,7 @@ public class ExceptionHelper
 
     /**
      * Get the root cause of an exception
-     * 
+     *
      * @param e
      *            the exception to check, must not be <code>null</code>
      * @return the root cause, is never <code>null</code>
@@ -40,11 +40,10 @@ public class ExceptionHelper
 
     /**
      * Get the message of the root cause
-     * 
+     *
      * @param e
      *            the exception from which the message should be extracted
      * @return the message of the root cause
-     * @see StatusHelper#extractMessage(Throwable)
      */
     public static String getMessage ( final Throwable e )
     {
@@ -53,7 +52,7 @@ public class ExceptionHelper
 
     /**
      * Extract the message from an exception
-     * 
+     *
      * @param e
      *            the exception to extract the message from
      * @return either the localized message, the message or the class name (in
@@ -82,7 +81,7 @@ public class ExceptionHelper
 
     /**
      * Format exception as string
-     * 
+     *
      * @param e
      *            the exception to format, may be <code>null</code>
      * @return the formatted exception or <code>null</code> if the exception was

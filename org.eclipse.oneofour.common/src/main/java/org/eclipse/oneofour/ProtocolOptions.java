@@ -322,12 +322,13 @@ public class ProtocolOptions
         }
 
         /**
-         * Set the target time zone <br/>
-         * If the timezone is not set or set to <code>null</code> the timezone
+         * Set the target time zone
+         *
+         * If the timezone is not set or set to {@code null} the timezone
          * will be <q>UTC</q>.
          *
          * @param timeZone
-         *            the target time zone, may be <code>null</code/>
+         *            the target time zone, may be {@code null}
          */
         public void setTimeZone ( final TimeZone timeZone )
         {
