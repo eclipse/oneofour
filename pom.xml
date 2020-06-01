@@ -2,82 +2,77 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<name>/org.eclipse.oneofour-parent</name>
+    <name>/org.eclipse.oneofour-parent</name>
 
-	<groupId>org.eclipse.oneofour</groupId>
-	<artifactId>org.eclipse.oneofour-parent</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+    <groupId>org.eclipse.oneofour</groupId>
+    <artifactId>org.eclipse.oneofour-parent</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
 
-	<packaging>pom</packaging>
+    <packaging>pom</packaging>
 
-	<organization>
-		<name>Eclipse OneOFour Project</name>
-	</organization>
+    <organization>
+        <name>Eclipse OneOFour Project</name>
+    </organization>
 
-	<scm>
-		<connection>scm:git:git://github.com/eclipse/oneofour.git</connection>
-		<developerConnection>scm:git:ssh://github.com:eclipse/oneofour.git</developerConnection>
-		<url>https://github.com/eclipse/oneofour</url>
-	</scm>
+    <scm>
+        <connection>scm:git:git://github.com/eclipse/oneofour.git</connection>
+        <developerConnection>scm:git:ssh://github.com:eclipse/oneofour.git</developerConnection>
+        <url>https://github.com/eclipse/oneofour</url>
+    </scm>
 
-  <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <jdk.min.version>8</jdk.min.version>
-    <maven.min.version>3.6.0</maven.min.version>
+        <jdk.min.version>8</jdk.min.version>
+        <maven.min.version>3.6.0</maven.min.version>
 
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
 
-    <!-- Plugin versions -->
-    <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <!-- Plugin versions -->
+        <version.compiler.plugin>3.8.1</version.compiler.plugin>
 
-    <!-- Dependency versions -->
-    <version.slf4j>1.7.30</version.slf4j>
-    <version.guava>29.0-jre</version.guava>
-    <version.netty>4.1.50.Final</version.netty>
-    <version.junit>5.6.2</version.junit>
-  </properties>
+        <!-- Dependency versions -->
+        <version.slf4j>1.7.30</version.slf4j>
+        <version.guava>29.0-jre</version.guava>
+        <version.netty>4.1.50.Final</version.netty>
+        <version.junit>5.6.2</version.junit>
+    </properties>
 
-	<modules>
-	  <module>org.eclipse.oneofour.utils</module>
-    <module>org.eclipse.oneofour.common</module>
-    <module>org.eclipse.oneofour.client</module>
-    <module>org.eclipse.oneofour.client.data</module>
-    <module>org.eclipse.oneofour.client.data.testing</module>
-    <module>org.eclipse.oneofour.server</module>
-    <module>org.eclipse.oneofour.server.data</module>
-    <module>org.eclipse.oneofour.server.data.tests</module>
-    <module>org.eclipse.oneofour.server.testing</module>
-    <module>org.eclipse.oneofour.tests</module>
-	</modules>
+    <modules>
+        <module>org.eclipse.oneofour.utils</module>
+        <module>org.eclipse.oneofour.common</module>
+        <module>org.eclipse.oneofour.client</module>
+        <module>org.eclipse.oneofour.client.data</module>
+        <module>org.eclipse.oneofour.client.data.testing</module>
+        <module>org.eclipse.oneofour.server</module>
+        <module>org.eclipse.oneofour.server.data</module>
+        <module>org.eclipse.oneofour.server.data.tests</module>
+        <module>org.eclipse.oneofour.server.testing</module>
+        <module>org.eclipse.oneofour.tests</module>
+    </modules>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-			</plugins>
-		</pluginManagement>
-
-		<plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${version.compiler.plugin}</version>
-        <configuration>
-          <compilerArgs>
-            <arg>-Xlint:all</arg>
-            <arg>-parameters</arg>
-          </compilerArgs>
-          <showDeprecation>true</showDeprecation>
-          <showWarnings>true</showWarnings>
-          <encoding>${project.build.sourceEncoding}</encoding>
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
-        </configuration>
-      </plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.compiler.plugin}</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint:all</arg>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <showDeprecation>true</showDeprecation>
+                    <showWarnings>true</showWarnings>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

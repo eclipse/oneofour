@@ -2,34 +2,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>org.eclipse.oneofour-parent</artifactId>
-		<groupId>org.eclipse.oneofour</groupId>
-		<version>0.1.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <artifactId>org.eclipse.oneofour-parent</artifactId>
+        <groupId>org.eclipse.oneofour</groupId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
 
-	<name>/org.eclipse.oneofour.common</name>
-	<artifactId>org.eclipse.oneofour.common</artifactId>
+    <name>/org.eclipse.oneofour.common</name>
+    <artifactId>org.eclipse.oneofour.common</artifactId>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.eclipse.oneofour</groupId>
-      <artifactId>org.eclipse.oneofour.utils</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.oneofour</groupId>
+            <artifactId>org.eclipse.oneofour.utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-handler</artifactId>
-      <version>${version.netty}</version>
-    </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>${version.netty}</version>
+        </dependency>
 
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>${version.guava}</version>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${version.guava}</version>
+        </dependency>
+    </dependencies>
 </project>
