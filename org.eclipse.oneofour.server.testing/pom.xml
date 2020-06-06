@@ -10,7 +10,7 @@
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <name>/org.eclipse.oneofour.server.testing</name>
+    <name>org.eclipse.oneofour.server.testing</name>
     <artifactId>org.eclipse.oneofour.server.testing</artifactId>
 
     <dependencies>

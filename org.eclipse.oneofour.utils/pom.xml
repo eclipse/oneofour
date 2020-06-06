@@ -9,7 +9,7 @@
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <name>/org.eclipse.oneofour.utils</name>
+    <name>org.eclipse.oneofour.utils</name>
     <artifactId>org.eclipse.oneofour.utils</artifactId>
 
     <dependencies>
