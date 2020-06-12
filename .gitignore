@@ -1,0 +1,17 @@
+target/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbproject/
+nb-configuration.xml
+
+# IntellijIDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode
