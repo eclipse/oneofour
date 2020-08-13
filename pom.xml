@@ -56,6 +56,7 @@
 
         <!-- Plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <version.resources.plugin>3.2.0</version.resources.plugin>
 
         <!-- Dependency versions -->
         <version.slf4j>1.7.30</version.slf4j>
@@ -78,6 +79,39 @@
     </modules>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${version.resources.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>copy-legal-resources</id>
+                            <goals>
+                                <goal>resources</goal>
+                            </goals>
+                            <phase>process-classes</phase>
+                            <configuration>
+                                <outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${maven.multiModuleProjectDirectory}</directory>
+                                        <filtering>true</filtering>
+                                        <include>NOTICE.md</include>
+                                        <include>NOTICE.Netty.txt</include>
+                                        <include>LICENSE</include>
+                                        <include>LICENSE-2.0.txt</include>
+                                        <include>LICENSE.slf4j.txt</include>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>            
+            </plugins>
+        </pluginManagement>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
