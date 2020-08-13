@@ -325,7 +325,7 @@ public class ProtocolOptions
          * Set the target time zone
          *
          * If the timezone is not set or set to {@code null} the timezone
-         * will be <q>UTC</q>.
+         * will be UTC.
          *
          * @param timeZone
          *            the target time zone, may be {@code null}

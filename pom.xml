@@ -56,6 +56,10 @@
 
         <!-- Plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <version.resources.plugin>3.2.0</version.resources.plugin>
+        <version.jar.plugin>3.2.0</version.jar.plugin>
+        <version.javadoc.plugin>3.2.0</version.javadoc.plugin>
+        <version.source.plugin>3.2.1</version.source.plugin>
 
         <!-- Dependency versions -->
         <version.slf4j>1.7.30</version.slf4j>
@@ -78,23 +82,95 @@
     </modules>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.compiler.plugin}</version>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.compiler.plugin}</version>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>-Xlint:all</arg>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                        <showDeprecation>true</showDeprecation>
+                        <showWarnings>true</showWarnings>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${version.jar.plugin}</version>
+                    <configuration>
+                        <skipIfEmpty>true</skipIfEmpty>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.javadoc.plugin}</version>
+                    <configuration>
+                        <doclint>all,-accessibility</doclint>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${version.resources.plugin}</version>
+                    <executions>
+                        <execution>
+                            <id>copy-legal-resources</id>
+                            <goals>
+                                <goal>resources</goal>
+                            </goals>
+                            <phase>process-classes</phase>
+                            <configuration>
+                                <outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${maven.multiModuleProjectDirectory}</directory>
+                                        <filtering>true</filtering>
+                                        <include>NOTICE.md</include>
+                                        <include>NOTICE.Netty.txt</include>
+                                        <include>LICENSE</include>
+                                        <include>LICENSE-2.0.txt</include>
+                                        <include>LICENSE.slf4j.txt</include>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${version.source.plugin}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>                
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
