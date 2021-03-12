@@ -111,9 +111,9 @@ public class DataChangeModelTest
         Assert.assertEquals ( 1, mirrorCommand.getTermination () );
     }
 
-    // FIXME: clarify what exactly this test is testing (fails)
+    // FIXME: clarify what exactly this test is testing
     @Test
-    public void testWriteCommandNotOk () throws Exception
+    public void testWriteFloatCommandOk () throws Exception
     {
         this.model.start ();
 
@@ -124,9 +124,9 @@ public class DataChangeModelTest
 
         // assert command
 
-        Assert.assertEquals ( 0, mirrorCommand.getPositive () );
-        Assert.assertEquals ( 1, mirrorCommand.getNegative () );
-        Assert.assertEquals ( 0, mirrorCommand.getTermination () );
+        Assert.assertEquals ( 1, mirrorCommand.getPositive () );
+        Assert.assertEquals ( 0, mirrorCommand.getNegative () );
+        Assert.assertEquals ( 1, mirrorCommand.getTermination () );
     }
 
     @Test
