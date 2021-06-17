@@ -13,7 +13,7 @@ pipeline {
 
         stage('Release') {
             when {
-                branch pattern: "release-*", comparator: "REGEXP"
+                branch pattern: "release-*"
             }
             steps {
                 withCredentials([file(credentialsId: 'secret-subkeys.asc', variable: 'KEYRING')]) {
