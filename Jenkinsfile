@@ -7,10 +7,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''
-                    mvn --version
-                    mvn clean install
-                '''
+                sh "mvn --batch-mode clean verify"
+            }
+        }
+
+        stage('Release') {
+            when {
+                branch pattern: "release-*", comparator: "REGEXP"
+            }
+            steps {
+                withCredentials([file(credentialsId: 'secret-subkeys.asc', variable: 'KEYRING')]) {
+                    sh 'gpg --batch --import "${KEYRING}"'
+                    sh 'for fpr in $(gpg --list-keys --with-colons  | awk -F: \'/fpr:/ {print $10}\' | sort -u); do echo -e "5\ny\n" |  gpg --batch --command-fd 0 --expert --edit-key ${fpr} trust; done'
+                }
+                echo 'Deploying because this commit is tagged...'
+                sh "mvn --batch-mode release:clean release:prepare"
+                sh "mvn --batch-mode release:perform -DdryRun=true"
             }
         }
     }
