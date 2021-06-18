@@ -20,8 +20,8 @@ pipeline {
                     sh 'gpg --batch --import "${KEYRING}"'
                     sh 'for fpr in $(gpg --list-keys --with-colons  | awk -F: \'/fpr:/ {print $10}\' | sort -u); do echo -e "5\ny\n" |  gpg --batch --command-fd 0 --expert --edit-key ${fpr} trust; done'
                 }
-                sh "mvn --batch-mode release:clean release:prepare -DsuppressCommitBeforeTag=true -DremoteTagging=false -DskipTests"
-                sh "mvn --batch-mode release:perform -DdryRun=true -DskipTests"
+
+                sh "mvn --batch-mode clean verify -Dchangelist= -DskipTests"
             }
         }
     }

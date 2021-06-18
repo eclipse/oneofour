@@ -8,7 +8,7 @@
 
     <groupId>org.eclipse.oneofour</groupId>
     <artifactId>org.eclipse.oneofour-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
 
     <packaging>pom</packaging>
 
@@ -53,6 +53,9 @@
     </distributionManagement>
 
     <properties>
+        <revision>0.1.0</revision>
+        <changelist>-SNAPSHOT</changelist>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -64,6 +67,7 @@
 
         <!-- Plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <version.flatten.plugin>1.2.2</version.flatten.plugin>
         <version.gpg.plugin>1.6</version.gpg.plugin>
         <version.jar.plugin>3.2.0</version.jar.plugin>
         <version.javadoc.plugin>3.2.0</version.javadoc.plugin>
@@ -92,6 +96,34 @@
     </modules>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${version.flatten.plugin}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
