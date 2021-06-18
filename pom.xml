@@ -67,6 +67,7 @@
 
         <!-- Plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <version.deploy.plugin>3.0.0-M1</version.deploy.plugin>
         <version.flatten.plugin>1.2.2</version.flatten.plugin>
         <version.gpg.plugin>1.6</version.gpg.plugin>
         <version.jar.plugin>3.2.0</version.jar.plugin>
@@ -140,6 +141,12 @@
                         <source>${maven.compiler.source}</source>
                         <target>${maven.compiler.target}</target>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${version.deploy.plugin}</version>
                 </plugin>
 
                 <plugin>
