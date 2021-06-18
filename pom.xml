@@ -71,7 +71,7 @@
         <version.flatten.plugin>1.2.2</version.flatten.plugin>
         <version.gpg.plugin>1.6</version.gpg.plugin>
         <version.jar.plugin>3.2.0</version.jar.plugin>
-        <version.javadoc.plugin>3.2.0</version.javadoc.plugin>
+        <version.javadoc.plugin>3.3.0</version.javadoc.plugin>
         <version.resources.plugin>3.2.0</version.resources.plugin>
         <version.source.plugin>3.2.1</version.source.plugin>
 
