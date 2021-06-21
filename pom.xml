@@ -44,14 +44,6 @@
         <url>https://ci.eclipse.org/oneofour</url>
     </ciManagement>
 
-    <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <name>Sonatype OSSRH - Release Staging Area</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
         <revision>0.1.0</revision>
         <changelist>-SNAPSHOT</changelist>
@@ -245,7 +237,15 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>maven-publish</id>
+
+            <distributionManagement>
+                <repository>
+                    <id>ossrh</id>
+                    <name>Sonatype OSSRH - Release Staging Area</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
 
             <build>
               <plugins>
