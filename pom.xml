@@ -121,7 +121,6 @@
     <module>org.eclipse.oneofour.client.data.testing</module>
     <module>org.eclipse.oneofour.server</module>
     <module>org.eclipse.oneofour.server.data</module>
-    <module>org.eclipse.oneofour.server.data.tests</module>
     <module>org.eclipse.oneofour.server.testing</module>
     <module>org.eclipse.oneofour.tests</module>
   </modules>
