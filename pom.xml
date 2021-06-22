@@ -118,7 +118,6 @@
     <module>org.eclipse.oneofour.common</module>
     <module>org.eclipse.oneofour.client</module>
     <module>org.eclipse.oneofour.client.data</module>
-    <module>org.eclipse.oneofour.client.data.testing</module>
     <module>org.eclipse.oneofour.server</module>
     <module>org.eclipse.oneofour.server.data</module>
     <module>org.eclipse.oneofour.server.testing</module>
