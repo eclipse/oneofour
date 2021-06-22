@@ -120,7 +120,6 @@
     <module>org.eclipse.oneofour.client.data</module>
     <module>org.eclipse.oneofour.server</module>
     <module>org.eclipse.oneofour.server.data</module>
-    <module>org.eclipse.oneofour.tests</module>
   </modules>
 
   <build>

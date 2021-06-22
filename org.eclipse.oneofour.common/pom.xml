@@ -31,5 +31,11 @@
       <artifactId>guava</artifactId>
       <version>${version.guava}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>${version.junit}</version>
+    </dependency>
   </dependencies>
 </project>
