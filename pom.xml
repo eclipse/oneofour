@@ -50,6 +50,38 @@
         <url>https://ci.eclipse.org/oneofour</url>
     </ciManagement>
 
+    <developers>
+        <developer>
+            <id>philschaller</id>
+            <name>Philippe Schaller</name>
+            <email>philippe.schaller@gmail.com</email>
+            <url>https://github.com/philschaller</url>
+            <roles>
+                <role>Lead</role>
+                <role>Committer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>vicentini</id>
+            <name>Martin Vicentini</name>
+            <email>martin.vicentini@gmail.com</email>
+            <url>https://github.com/vicentini</url>
+            <roles>
+                <role>Committer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>ctron</id>
+            <name>Jens Reimann</name>
+            <email>jreimann@redhat.com</email>
+            <url>https://github.com/ctron</url>
+            <roles>
+                <role>Mentor</role>
+                <role>Committer</role>
+            </roles>
+        </developer>
+    </developers>
+
     <properties>
         <revision>0.1.0</revision>
         <changelist>-SNAPSHOT</changelist>
