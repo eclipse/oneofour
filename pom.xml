@@ -15,6 +15,12 @@
     <url>https://www.eclipse.org/oneofour</url>
     <inceptionYear>2020</inceptionYear>
 
+    <description>
+      The International Electrotechnical Commission (IEC) 60870-5 standard is used for communication
+      between SCADA systems and the subset IEC 60870-5-104 is specifying network access over TCP
+      connections.
+    </description>
+
     <organization>
         <name>Eclipse Foundation</name>
         <url>https://www.eclipse.org</url>
