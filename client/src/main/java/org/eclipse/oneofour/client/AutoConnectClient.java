@@ -15,11 +15,14 @@ package org.eclipse.oneofour.client;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.UnresolvedAddressException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.oneofour.ProtocolOptions;
 import org.eclipse.oneofour.utils.concurrent.ScheduledExportedExecutorService;
@@ -55,7 +58,7 @@ public class AutoConnectClient implements AutoCloseable
         }
     };
 
-    private final StateListener stateListener;
+    private final List<StateListener> stateListeners = new ArrayList<>();
 
     private volatile ScheduledExecutorService executor;
 
@@ -88,8 +91,13 @@ public class AutoConnectClient implements AutoCloseable
 
     public AutoConnectClient ( final String host, final int port, final ProtocolOptions options, final ModulesFactory modulesFactory, final StateListener stateListener )
     {
+        this ( host, port, options, modulesFactory, Stream.of( stateListener ).collect( Collectors.toList() ) );
+    }
+
+    public AutoConnectClient ( final String host, final int port, final ProtocolOptions options, final ModulesFactory modulesFactory, final List<StateListener> stateListeners )
+    {
         this.executor = new ScheduledExportedExecutorService ( makeName ( host, port ), 1 );
-        this.stateListener = stateListener;
+        this.stateListeners.addAll( stateListeners );
         this.options = options;
         this.modulesFactory = modulesFactory;
         this.address = makeAddress ( host, port );
@@ -211,14 +219,15 @@ public class AutoConnectClient implements AutoCloseable
             logger.info ( "State failure", e );
         }
 
-        if ( this.stateListener != null && this.executor != null )
+        if ( !this.stateListeners.isEmpty() && this.executor != null )
         {
             this.executor.execute ( new Runnable () {
 
                 @Override
                 public void run ()
                 {
-                    AutoConnectClient.this.stateListener.stateChanged ( state, e );
+
+                    AutoConnectClient.this.stateListeners.stream().forEach( stateListener -> stateListener.stateChanged ( state, e ) );
                 }
             } );
         }
