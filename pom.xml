@@ -2,312 +2,308 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <name>org.eclipse.oneofour-parent</name>
+  <name>org.eclipse.oneofour-parent</name>
 
-    <groupId>org.eclipse.oneofour</groupId>
-    <artifactId>org.eclipse.oneofour-parent</artifactId>
-    <version>${revision}${changelist}</version>
+  <groupId>org.eclipse.oneofour</groupId>
+  <artifactId>org.eclipse.oneofour-parent</artifactId>
+  <version>${revision}${changelist}</version>
 
-    <packaging>pom</packaging>
+  <packaging>pom</packaging>
 
-    <url>https://www.eclipse.org/oneofour</url>
-    <inceptionYear>2020</inceptionYear>
+  <url>https://www.eclipse.org/oneofour</url>
+  <inceptionYear>2020</inceptionYear>
 
-    <description>
-      The International Electrotechnical Commission (IEC) 60870-5 standard is used for communication
-      between SCADA systems and the subset IEC 60870-5-104 is specifying network access over TCP
-      connections.
-    </description>
+  <description>
+    The International Electrotechnical Commission (IEC) 60870-5 standard is used for communication
+    between SCADA systems and the subset IEC 60870-5-104 is specifying network access over TCP
+    connections.
+  </description>
 
-    <organization>
-        <name>Eclipse Foundation</name>
-        <url>https://www.eclipse.org</url>
-    </organization>
+  <organization>
+    <name>Eclipse Foundation</name>
+    <url>https://www.eclipse.org</url>
+  </organization>
 
-    <licenses>
-        <license>
-            <name>Eclipse Public License - Version 2.0</name>
-            <url>http://www.eclipse.org/legal/epl-2.0</url>
-            <comments>SPDX-License-Identifier: EPL-2.0</comments>
-        </license>
-    </licenses>
+  <licenses>
+    <license>
+      <name>Eclipse Public License - Version 2.0</name>
+      <url>http://www.eclipse.org/legal/epl-2.0</url>
+      <comments>SPDX-License-Identifier: EPL-2.0</comments>
+    </license>
+  </licenses>
 
-    <scm>
-        <connection>scm:git:git://github.com/eclipse/oneofour.git</connection>
-        <developerConnection>scm:git:ssh://github.com:eclipse/oneofour.git</developerConnection>
-        <url>https://github.com/eclipse/oneofour</url>
-    </scm>
+  <scm>
+    <connection>scm:git:git://github.com/eclipse/oneofour.git</connection>
+    <developerConnection>scm:git:ssh://github.com:eclipse/oneofour.git</developerConnection>
+    <url>https://github.com/eclipse/oneofour</url>
+  </scm>
 
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>https://github.com/eclipse/oneofour/issues</url>
-    </issueManagement>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/eclipse/oneofour/issues</url>
+  </issueManagement>
 
-    <ciManagement>
-        <system>Jenkins</system>
-        <url>https://ci.eclipse.org/oneofour</url>
-    </ciManagement>
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://ci.eclipse.org/oneofour</url>
+  </ciManagement>
 
-    <developers>
-        <developer>
-            <id>philschaller</id>
-            <name>Philippe Schaller</name>
-            <email>philippe.schaller@gmail.com</email>
-            <url>https://github.com/philschaller</url>
-            <roles>
-                <role>Lead</role>
-                <role>Committer</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>vicentini</id>
-            <name>Martin Vicentini</name>
-            <email>martin.vicentini@gmail.com</email>
-            <url>https://github.com/vicentini</url>
-            <roles>
-                <role>Committer</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>ctron</id>
-            <name>Jens Reimann</name>
-            <email>jreimann@redhat.com</email>
-            <url>https://github.com/ctron</url>
-            <roles>
-                <role>Mentor</role>
-                <role>Committer</role>
-            </roles>
-        </developer>
-    </developers>
+  <developers>
+    <developer>
+      <id>philschaller</id>
+      <name>Philippe Schaller</name>
+      <email>philippe.schaller@gmail.com</email>
+      <url>https://github.com/philschaller</url>
+      <roles>
+        <role>Lead</role>
+        <role>Committer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>vicentini</id>
+      <name>Martin Vicentini</name>
+      <email>martin.vicentini@gmail.com</email>
+      <url>https://github.com/vicentini</url>
+      <roles>
+        <role>Committer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>ctron</id>
+      <name>Jens Reimann</name>
+      <email>jreimann@redhat.com</email>
+      <url>https://github.com/ctron</url>
+      <roles>
+        <role>Mentor</role>
+        <role>Committer</role>
+      </roles>
+    </developer>
+  </developers>
 
-    <properties>
-        <revision>0.1.0</revision>
-        <changelist>-SNAPSHOT</changelist>
+  <properties>
+    <revision>0.1.0</revision>
+    <changelist>-SNAPSHOT</changelist>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <jdk.min.version>8</jdk.min.version>
-        <maven.min.version>3.6.0</maven.min.version>
+    <jdk.min.version>8</jdk.min.version>
+    <maven.min.version>3.6.0</maven.min.version>
 
-        <maven.compiler.target>8</maven.compiler.target>
-        <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.source>8</maven.compiler.source>
 
-        <!-- Plugin versions -->
-        <version.compiler.plugin>3.8.1</version.compiler.plugin>
-        <version.deploy.plugin>3.0.0-M1</version.deploy.plugin>
-        <version.flatten.plugin>1.2.2</version.flatten.plugin>
-        <version.gpg.plugin>1.6</version.gpg.plugin>
-        <version.jar.plugin>3.2.0</version.jar.plugin>
-        <version.javadoc.plugin>3.3.0</version.javadoc.plugin>
-        <version.nexus-staging.plugin>1.6.8</version.nexus-staging.plugin>
-        <version.resources.plugin>3.2.0</version.resources.plugin>
-        <version.source.plugin>3.2.1</version.source.plugin>
+    <!-- Plugin versions -->
+    <version.compiler.plugin>3.8.1</version.compiler.plugin>
+    <version.deploy.plugin>3.0.0-M1</version.deploy.plugin>
+    <version.flatten.plugin>1.2.2</version.flatten.plugin>
+    <version.gpg.plugin>1.6</version.gpg.plugin>
+    <version.jar.plugin>3.2.0</version.jar.plugin>
+    <version.javadoc.plugin>3.3.0</version.javadoc.plugin>
+    <version.nexus-staging.plugin>1.6.8</version.nexus-staging.plugin>
+    <version.resources.plugin>3.2.0</version.resources.plugin>
+    <version.source.plugin>3.2.1</version.source.plugin>
 
-        <!-- Dependency versions -->
-        <version.slf4j>1.7.30</version.slf4j>
-        <version.guava>28.2-jre</version.guava>
-        <version.netty>4.1.51.Final</version.netty>
-        <version.junit>5.6.0</version.junit>
-    </properties>
+    <!-- Dependency versions -->
+    <version.slf4j>1.7.30</version.slf4j>
+    <version.guava>28.2-jre</version.guava>
+    <version.netty>4.1.51.Final</version.netty>
+    <version.junit>5.6.0</version.junit>
+  </properties>
 
-    <modules>
-        <module>org.eclipse.oneofour.utils</module>
-        <module>org.eclipse.oneofour.common</module>
-        <module>org.eclipse.oneofour.client</module>
-        <module>org.eclipse.oneofour.client.data</module>
-        <!--<module>org.eclipse.oneofour.client.data.testing</module>-->
-        <module>org.eclipse.oneofour.server</module>
-        <module>org.eclipse.oneofour.server.data</module>
-        <!--<module>org.eclipse.oneofour.server.data.tests</module>-->
-        <!--<module>org.eclipse.oneofour.server.testing</module>-->
-        <!--<module>org.eclipse.oneofour.tests</module>-->
-    </modules>
+  <modules>
+    <module>utils</module>
+    <module>common</module>
+    <module>client</module>
+    <module>client-data</module>
+    <module>server</module>
+    <module>server-data</module>
+  </modules>
 
-    <build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>${version.flatten.plugin}</version>
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <flattenMode>resolveCiFriendliesOnly</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${version.compiler.plugin}</version>
+          <configuration>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+              <arg>-parameters</arg>
+            </compilerArgs>
+            <showDeprecation>true</showDeprecation>
+            <showWarnings>true</showWarnings>
+            <encoding>${project.build.sourceEncoding}</encoding>
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${version.deploy.plugin}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${version.jar.plugin}</version>
+          <configuration>
+            <skipIfEmpty>true</skipIfEmpty>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${version.javadoc.plugin}</version>
+          <configuration>
+            <doclint>all,-accessibility</doclint>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${version.gpg.plugin}</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+              <configuration>
+                <gpgArguments>
+                  <arg>--pinentry-mode</arg>
+                  <arg>loopback</arg>
+                </gpgArguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${version.resources.plugin}</version>
+          <executions>
+            <execution>
+              <id>copy-legal-resources</id>
+              <goals>
+                <goal>resources</goal>
+              </goals>
+              <phase>process-classes</phase>
+              <configuration>
+                <outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>${maven.multiModuleProjectDirectory}</directory>
+                    <filtering>true</filtering>
+                    <include>NOTICE.md</include>
+                    <include>NOTICE.Netty.txt</include>
+                    <include>LICENSE</include>
+                    <include>LICENSE-2.0.txt</include>
+                    <include>LICENSE.slf4j.txt</include>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.source.plugin}</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>maven-publish</id>
+
+      <distributionManagement>
+        <repository>
+          <id>ossrh</id>
+          <name>Sonatype OSSRH - Release Staging Area</name>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+      </distributionManagement>
+
+      <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <version>${version.flatten.plugin}</version>
-                <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>${version.nexus-staging.plugin}</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+              <skipStaging>false</skipStaging>
+              <skipRemoteStaging>false</skipRemoteStaging>
+            </configuration>
+          </plugin>
         </plugins>
-
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${version.compiler.plugin}</version>
-                    <configuration>
-                        <compilerArgs>
-                            <arg>-Xlint:all</arg>
-                            <arg>-parameters</arg>
-                        </compilerArgs>
-                        <showDeprecation>true</showDeprecation>
-                        <showWarnings>true</showWarnings>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${version.deploy.plugin}</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${version.jar.plugin}</version>
-                    <configuration>
-                        <skipIfEmpty>true</skipIfEmpty>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>${version.javadoc.plugin}</version>
-                    <configuration>
-                        <doclint>all,-accessibility</doclint>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${version.gpg.plugin}</version>
-                    <executions>
-                        <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
-                            <goals>
-                            <goal>sign</goal>
-                            </goals>
-                            <configuration>
-                                <gpgArguments>
-                                    <arg>--pinentry-mode</arg>
-                                    <arg>loopback</arg>
-                                </gpgArguments>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${version.resources.plugin}</version>
-                    <executions>
-                        <execution>
-                            <id>copy-legal-resources</id>
-                            <goals>
-                                <goal>resources</goal>
-                            </goals>
-                            <phase>process-classes</phase>
-                            <configuration>
-                                <outputDirectory>${basedir}/target/classes/META-INF</outputDirectory>
-                                <resources>
-                                    <resource>
-                                        <directory>${maven.multiModuleProjectDirectory}</directory>
-                                        <filtering>true</filtering>
-                                        <include>NOTICE.md</include>
-                                        <include>NOTICE.Netty.txt</include>
-                                        <include>LICENSE</include>
-                                        <include>LICENSE-2.0.txt</include>
-                                        <include>LICENSE.slf4j.txt</include>
-                                    </resource>
-                                </resources>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>${version.source.plugin}</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-    <profiles>
-        <profile>
-            <id>maven-publish</id>
-
-            <distributionManagement>
-                <repository>
-                    <id>ossrh</id>
-                    <name>Sonatype OSSRH - Release Staging Area</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-
-            <build>
-              <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${version.nexus-staging.plugin}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                       <serverId>ossrh</serverId>
-                       <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                       <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                       <skipStaging>false</skipStaging>
-                       <skipRemoteStaging>false</skipRemoteStaging>
-                    </configuration>
-                  </plugin>
-              </plugins>
-            </build>
-        </profile>
-    </profiles>
+      </build>
+    </profile>
+  </profiles>
 </project>
