@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 IBH SYSTEMS GmbH and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -21,15 +21,16 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.eclipse.oneofour.ProtocolOptions;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TimestampTest
 {
     private ProtocolOptions options;
 
-    @Before
+    @BeforeEach
     public void setup ()
     {
         this.options = new ProtocolOptions.Builder ().build ();
@@ -58,7 +59,7 @@ public class TimestampTest
         final long rts1 = TypeHelper.parseTimestamp ( this.options, buf );
 
         dump ( ts1, rts1 );
-        Assert.assertEquals ( ts1, rts1 );
+        Assertions.assertEquals ( ts1, rts1 );
     }
 
     private void dump ( final long ts1, final long rts1 )

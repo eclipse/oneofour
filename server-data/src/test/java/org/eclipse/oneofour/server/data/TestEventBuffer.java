@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 IBH SYSTEMS GmbH and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -24,10 +24,10 @@ import org.eclipse.oneofour.asdu.types.InformationObjectAddress;
 import org.eclipse.oneofour.asdu.types.QualityInformation;
 import org.eclipse.oneofour.asdu.types.StandardCause;
 import org.eclipse.oneofour.asdu.types.Value;
-import org.junit.Assert;
-import org.junit.Test;
 import org.eclipse.oneofour.server.data.event.EventBuffer;
 import org.eclipse.oneofour.server.data.event.MessageBuilder;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestEventBuffer
 {
@@ -140,7 +140,7 @@ public class TestEventBuffer
 
         final PollResult<Float> result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
 
-        Assert.assertNull ( result );
+        Assertions.assertNull ( result );
     }
 
     @Test
@@ -156,7 +156,7 @@ public class TestEventBuffer
 
         final PollResult<Float> result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 20 ) );
 
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 0.0f ),
                 new Pair<> ( 1, 1.0f ),
@@ -170,7 +170,7 @@ public class TestEventBuffer
                 new Pair<> ( 1, 900.0f ),
         }, result.getEntries () );
 
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
     }
 
     @Test
@@ -185,7 +185,7 @@ public class TestEventBuffer
         doubleFill ( limit, cot1, asduAddress, buffer, 1 );
 
         final PollResult<Float> result1 = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 5 ) );
-        Assert.assertEquals ( cot1, result1.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result1.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 0.0f ),
                 new Pair<> ( 1, 1.0f ),
@@ -194,10 +194,10 @@ public class TestEventBuffer
                 new Pair<> ( 1, 4.0f ),
         }, result1.getEntries () );
 
-        Assert.assertEquals ( 5, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 5, buffer.getCauseCounter ( cot1, asduAddress ) );
 
         final PollResult<Float> result2 = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 5 ) );
-        Assert.assertEquals ( cot1, result2.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result2.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 5.0f ),
                 new Pair<> ( 1, 6.0f ),
@@ -206,7 +206,7 @@ public class TestEventBuffer
                 new Pair<> ( 1, 900.0f ),
         }, result2.getEntries () );
 
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
     }
 
     // test A1, B1, C1, A2x, E1x
@@ -227,30 +227,30 @@ public class TestEventBuffer
         PollResult<Float> result;
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 100.0f ),
                 new Pair<> ( 2, 200.0f ),
                 new Pair<> ( 3, 300.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot2, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot2, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 1000.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 4, 400.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
     }
 
     // test A1, B1, C1, D2x, D1x, D3x, E1
@@ -276,43 +276,43 @@ public class TestEventBuffer
         PollResult<Float> result;
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 100.0f ),
                 new Pair<> ( 2, 200.0f ),
                 new Pair<> ( 3, 300.0f ),
                 new Pair<> ( 5, 500.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot2, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot2, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 4, 4000.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 4, 400.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot3, asduAddress ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot3, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( cot3, result.getCauseOfTransmission () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 4, 40000.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot3, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot3, asduAddress ) );
     }
 
     /*
@@ -337,60 +337,60 @@ public class TestEventBuffer
         PollResult<Float> result;
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
-        Assert.assertEquals ( asduAddress1, result.getAsduAddress () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( asduAddress1, result.getAsduAddress () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 100.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress2 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress1 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot1, asduAddress2 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress1 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot1, result.getCauseOfTransmission () );
-        Assert.assertEquals ( asduAddress2, result.getAsduAddress () );
+        Assertions.assertEquals ( cot1, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( asduAddress2, result.getAsduAddress () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 200.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress1 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress1 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot2, result.getCauseOfTransmission () );
-        Assert.assertEquals ( asduAddress1, result.getAsduAddress () );
+        Assertions.assertEquals ( cot2, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( asduAddress1, result.getAsduAddress () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 1000.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress1 ) );
-        Assert.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress1 ) );
+        Assertions.assertEquals ( 1, buffer.getCauseCounter ( cot2, asduAddress2 ) );
 
         result = buffer.poll ( new TestResultBuilder<Float> ( Float.class, 10 ) );
-        Assert.assertEquals ( cot2, result.getCauseOfTransmission () );
-        Assert.assertEquals ( asduAddress2, result.getAsduAddress () );
+        Assertions.assertEquals ( cot2, result.getCauseOfTransmission () );
+        Assertions.assertEquals ( asduAddress2, result.getAsduAddress () );
         assertEntries ( new Pair<?>[] {
                 new Pair<> ( 1, 2000.0f ),
         }, result.getEntries () );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress1 ) );
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress1 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot1, asduAddress2 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress1 ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot2, asduAddress2 ) );
     }
 
     private void doubleFill ( final int limit, final CauseOfTransmission cot, final ASDUAddress asduAddress, final EventBuffer<Float> buffer, final int addressValue )
     {
-        Assert.assertEquals ( 0, buffer.getCauseCounter ( cot, asduAddress ) );
+        Assertions.assertEquals ( 0, buffer.getCauseCounter ( cot, asduAddress ) );
 
         final InformationObjectAddress address = new InformationObjectAddress ( addressValue );
 
         for ( int i = 0; i < limit; i++ )
         {
             buffer.append ( cot, asduAddress, address, new Value<Float> ( (float)i, 0, QualityInformation.OK ) );
-            Assert.assertEquals ( 1 + i, buffer.getCauseCounter ( cot, asduAddress ) ); // works only when we have one cause for testing
+            Assertions.assertEquals ( 1 + i, buffer.getCauseCounter ( cot, asduAddress ) ); // works only when we have one cause for testing
         }
 
         // reached limit
@@ -398,7 +398,7 @@ public class TestEventBuffer
         for ( int i = 0; i < limit; i++ )
         {
             buffer.append ( cot, asduAddress, address, new Value<Float> ( 100.0f * i, 0, QualityInformation.OK ) );
-            Assert.assertEquals ( limit, buffer.getCauseCounter ( cot, asduAddress ) ); // works only when we have one cause for testing
+            Assertions.assertEquals ( limit, buffer.getCauseCounter ( cot, asduAddress ) ); // works only when we have one cause for testing
         }
     }
 
@@ -416,6 +416,6 @@ public class TestEventBuffer
 
     private void assertEntries ( final List<InformationEntry<?>> expecteds, final List<InformationEntry<Float>> actuals )
     {
-        Assert.assertArrayEquals ( expecteds.toArray (), actuals.toArray () );
+        Assertions.assertArrayEquals ( expecteds.toArray (), actuals.toArray () );
     }
 }

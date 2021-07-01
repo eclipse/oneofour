@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2016 Red Hat Inc and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -14,14 +14,15 @@
 package org.eclipse.oneofour.server.data.model;
 
 import static java.time.Instant.now;
-import static org.junit.Assert.fail;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.CompletableFuture;
 
 import org.eclipse.oneofour.server.data.Stopping;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class StoppingTest
 {
@@ -94,7 +95,7 @@ public class StoppingTest
         final Duration duration = Duration.between ( start, now () );
         if ( duration.toMillis () > wait )
         {
-            fail ( String.format ( "Should take less than %s ms, took %s ms", wait, duration.toMillis () ) );
+            Assertions.fail ( String.format ( "Should take less than %s ms, took %s ms", wait, duration.toMillis () ) );
         }
     }
 
@@ -103,7 +104,7 @@ public class StoppingTest
         final Duration duration = Duration.between ( start, now () );
         if ( duration.toMillis () < wait )
         {
-            fail ( String.format ( "Should take as least %s ms, took %s ms", wait, duration.toMillis () ) );
+            Assertions.fail ( String.format ( "Should take as least %s ms, took %s ms", wait, duration.toMillis () ) );
         }
     }
 }

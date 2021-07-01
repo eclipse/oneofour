@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 IBH SYSTEMS GmbH and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -28,8 +28,9 @@ import org.eclipse.oneofour.asdu.types.CauseOfTransmission;
 import org.eclipse.oneofour.asdu.types.InformationEntry;
 import org.eclipse.oneofour.asdu.types.InformationObjectAddress;
 import org.eclipse.oneofour.asdu.types.Value;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestMessageSource
 {
@@ -99,11 +100,11 @@ public class TestMessageSource
 
     private void assertEquals ( final AbstractSingleBooleanBaseSingle expected, final Object actualObject )
     {
-        Assert.assertEquals ( expected.getClass (), actualObject.getClass () );
+        Assertions.assertEquals ( expected.getClass (), actualObject.getClass () );
 
         final AbstractSingleBooleanBaseSingle actual = (AbstractSingleBooleanBaseSingle)actualObject;
 
-        Assert.assertEquals ( expected.getHeader (), actual.getHeader () );
-        Assert.assertEquals ( expected.getEntries (), actual.getEntries () );
+        Assertions.assertEquals ( expected.getHeader (), actual.getHeader () );
+        Assertions.assertEquals ( expected.getEntries (), actual.getEntries () );
     }
 }

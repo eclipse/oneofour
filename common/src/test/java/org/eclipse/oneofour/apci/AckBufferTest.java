@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2014 IBH SYSTEMS GmbH and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -13,9 +13,11 @@
  *******************************************************************************/
 package org.eclipse.oneofour.apci;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AckBufferTest
 {
@@ -25,7 +27,7 @@ public class AckBufferTest
 
     private static final int MAX_SEQUENCE = 5;
 
-    @Before
+    @BeforeEach
     public void setup ()
     {
         this.buffer = new AckBuffer ( MAX_OUTSTANDING, MAX_SEQUENCE );
@@ -34,7 +36,7 @@ public class AckBufferTest
     @Test
     public void testInit ()
     {
-        Assert.assertEquals ( "Initial outstanding acks", 0, this.buffer.getOutstandingAcks () );
+        Assertions.assertEquals ( 0, this.buffer.getOutstandingAcks (), "Initial outstanding acks" );
     }
 
     @Test
@@ -49,12 +51,14 @@ public class AckBufferTest
         gotAck ( 2, 0 );
     }
 
-    @Test ( expected = IndexOutOfBoundsException.class )
+    @Test
     public void testFull ()
     {
         addMessage ( 0, 1 );
         addMessage ( 1, 2 );
-        addMessage ( 2, 3 ); // should fail with IndexOutOfBoundsException
+
+        // should fail with IndexOutOfBoundsException
+        assertThrows( IndexOutOfBoundsException.class, () -> addMessage ( 2, 3 ) );
     }
 
     @Test
@@ -104,23 +108,25 @@ public class AckBufferTest
         gotAck ( 0, 1 ); // this not wrong, but considered a duplicate
     }
 
-    @Test ( expected = IllegalStateException.class )
+    @Test
     public void testSeqError2 ()
     {
         addMessage ( 0, 1 );
-        gotAck ( 2, 0 ); // ack error, should be 1
+
+        // ack error, should be 1
+        assertThrows( IllegalStateException.class, () -> gotAck ( 2, 0 ) );
     }
 
     protected void addMessage ( final int expectedSequence, final int expectedOutstanding )
     {
         final int seq = this.buffer.addMessage ( new Object () );
-        Assert.assertEquals ( "Sequence Number", expectedSequence, seq );
-        Assert.assertEquals ( "Outstanding acks", expectedOutstanding, this.buffer.getOutstandingAcks () );
+        Assertions.assertEquals ( expectedSequence, seq, "Sequence Number" );
+        Assertions.assertEquals ( expectedOutstanding, this.buffer.getOutstandingAcks (), "Outstanding acks" );
     }
 
     protected void gotAck ( final int ack, final int expectedOutstanding )
     {
         this.buffer.gotAck ( ack );
-        Assert.assertEquals ( "Outstanding acks", expectedOutstanding, this.buffer.getOutstandingAcks () );
+        Assertions.assertEquals ( expectedOutstanding, this.buffer.getOutstandingAcks (), "Outstanding acks" );
     }
 }

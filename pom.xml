@@ -105,12 +105,14 @@
     <version.nexus-staging.plugin>1.6.8</version.nexus-staging.plugin>
     <version.resources.plugin>3.2.0</version.resources.plugin>
     <version.source.plugin>3.2.1</version.source.plugin>
+    <version.surefire.plugin>3.0.0-M5</version.surefire.plugin>
 
     <!-- Dependency versions -->
     <version.slf4j>1.7.30</version.slf4j>
     <version.guava>30.1.1-jre</version.guava>
     <version.netty>4.1.65.Final</version.netty>
     <version.junit>5.7.0</version.junit>
+    <version.hamcrest>1.3</version.hamcrest>
   </properties>
 
   <modules>
@@ -264,6 +266,18 @@
                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               </manifest>
             </archive>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${version.surefire.plugin}</version>
+          <configuration>
+            <trimStackTrace>false</trimStackTrace>
+            <systemProperties>
+              <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+            </systemProperties>
           </configuration>
         </plugin>
       </plugins>

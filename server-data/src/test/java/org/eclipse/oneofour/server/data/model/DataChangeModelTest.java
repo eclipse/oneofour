@@ -1,11 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2016, 2017 Red Hat Inc and others.
- * 
+ *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v20.html
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
@@ -13,12 +13,8 @@
  *******************************************************************************/
 package org.eclipse.oneofour.server.data.model;
 
-import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.instanceOf;
 
 import org.eclipse.oneofour.asdu.ASDUHeader;
 import org.eclipse.oneofour.asdu.message.AbstractMessage;
@@ -32,11 +28,13 @@ import org.eclipse.oneofour.asdu.types.StandardCause;
 import org.eclipse.oneofour.asdu.types.Value;
 import org.eclipse.oneofour.server.data.BackgroundIterator;
 import org.eclipse.oneofour.server.data.model.MockDataListener.Event;
+
 import org.hamcrest.Matcher;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class DataChangeModelTest
 {
@@ -46,14 +44,14 @@ public class DataChangeModelTest
 
     private Thread[] threads;
 
-    @Before
+    @BeforeEach
     public void before ()
     {
         this.model = new MockChangeDataModel ( null );
         this.threads = Thread.getAllStackTraces ().keySet ().toArray ( new Thread[0] );
     }
 
-    @After
+    @AfterEach
     public void after () throws Exception
     {
         this.model.stop ().await ();
@@ -66,7 +64,7 @@ public class DataChangeModelTest
         {
             dumpThreads ( "Before", this.threads );
             dumpThreads ( "After", threads );
-            fail ( "Illegal thread count" );
+            Assertions.fail ( "Illegal thread count" );
         }
     }
 
@@ -106,9 +104,9 @@ public class DataChangeModelTest
 
         // assert command
 
-        Assert.assertEquals ( 1, mirrorCommand.getPositive () );
-        Assert.assertEquals ( 0, mirrorCommand.getNegative () );
-        Assert.assertEquals ( 1, mirrorCommand.getTermination () );
+        Assertions.assertEquals ( 1, mirrorCommand.getPositive () );
+        Assertions.assertEquals ( 0, mirrorCommand.getNegative () );
+        Assertions.assertEquals ( 1, mirrorCommand.getTermination () );
     }
 
     // FIXME: clarify what exactly this test is testing
@@ -124,9 +122,9 @@ public class DataChangeModelTest
 
         // assert command
 
-        Assert.assertEquals ( 1, mirrorCommand.getPositive () );
-        Assert.assertEquals ( 0, mirrorCommand.getNegative () );
-        Assert.assertEquals ( 1, mirrorCommand.getTermination () );
+        Assertions.assertEquals ( 1, mirrorCommand.getPositive () );
+        Assertions.assertEquals ( 0, mirrorCommand.getNegative () );
+        Assertions.assertEquals ( 1, mirrorCommand.getTermination () );
     }
 
     @Test
@@ -234,7 +232,7 @@ public class DataChangeModelTest
 
     private void assertLastBackgroundMessage ( final BackgroundIterator iter )
     {
-        assertNull ( iter.nextMessage () );
+        Assertions.assertNull ( iter.nextMessage () );
     }
 
     private void assertNextBackgroundMessage ( final BackgroundIterator iter, final int size )
@@ -245,12 +243,12 @@ public class DataChangeModelTest
     private void assertNextBackgroundMessage ( final BackgroundIterator iter, final int size, final Matcher<Object> matcher )
     {
         final Object o = iter.nextMessage ();
-        assertNotNull ( o );
+        Assertions.assertNotNull ( o );
 
         assertThat ( o, instanceOf ( AbstractMessage.class ) );
 
         final AbstractMessage amsg = (AbstractMessage)o;
-        assertEquals ( StandardCause.BACKGROUND, amsg.getHeader ().getCauseOfTransmission ().getCause () );
+        Assertions.assertEquals ( StandardCause.BACKGROUND, amsg.getHeader ().getCauseOfTransmission ().getCause () );
 
         if ( matcher != null )
         {
@@ -260,16 +258,16 @@ public class DataChangeModelTest
         if ( amsg instanceof SinglePointInformationSequence )
         {
             final SinglePointInformationSequence msg = (SinglePointInformationSequence)amsg;
-            assertEquals ( size, msg.getValues ().size () );
+            Assertions.assertEquals ( size, msg.getValues ().size () );
         }
         else if ( amsg instanceof MeasuredValueShortFloatingPointSequence )
         {
             final MeasuredValueShortFloatingPointSequence msg = (MeasuredValueShortFloatingPointSequence)amsg;
-            assertEquals ( size, msg.getValues ().size () );
+            Assertions.assertEquals ( size, msg.getValues ().size () );
         }
         else
         {
-            fail ( "Wrong messgae type: " + amsg.getClass ().getName () );
+            Assertions.fail ( "Wrong messgae type: " + amsg.getClass ().getName () );
         }
     }
 }
