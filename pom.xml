@@ -89,11 +89,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <jdk.min.version>8</jdk.min.version>
+    <jdk.min.version>11</jdk.min.version>
     <maven.min.version>3.8.4</maven.min.version>
 
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.testRelease>${maven.compiler.release}</maven.compiler.testRelease>
 
     <!-- Plugin versions -->
     <version.compiler.plugin>3.9.0</version.compiler.plugin>
@@ -167,8 +167,8 @@
             <showDeprecation>true</showDeprecation>
             <showWarnings>true</showWarnings>
             <encoding>${project.build.sourceEncoding}</encoding>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
+            <release>${maven.compiler.release}</release>
+            <testRelease>${maven.compiler.testRelease}</testRelease>
           </configuration>
         </plugin>
 
