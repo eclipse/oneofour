@@ -83,7 +83,7 @@
   </developers>
 
   <properties>
-    <revision>0.1.0</revision>
+    <revision>0.2.0</revision>
     <changelist>-SNAPSHOT</changelist>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
