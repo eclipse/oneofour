@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'apache-maven-3.8.4'
-        jdk 'adoptopenjdk-hotspot-jdk11-latest'
+        jdk 'temurin-jdk11-latest'
     }
     stages {
         stage('Build') {
