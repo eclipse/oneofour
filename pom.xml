@@ -92,20 +92,17 @@
     <jdk.min.version>11</jdk.min.version>
     <maven.min.version>3.8.4</maven.min.version>
 
-    <maven.compiler.release>11</maven.compiler.release>
-    <maven.compiler.testRelease>${maven.compiler.release}</maven.compiler.testRelease>
-
     <!-- Plugin versions -->
-    <version.compiler.plugin>3.9.0</version.compiler.plugin>
-    <version.deploy.plugin>3.0.0-M2</version.deploy.plugin>
-    <version.flatten.plugin>1.2.7</version.flatten.plugin>
+    <version.compiler.plugin>3.11.0</version.compiler.plugin>
+    <version.deploy.plugin>3.1.1</version.deploy.plugin>
+    <version.flatten.plugin>1.4.1</version.flatten.plugin>
     <version.gpg.plugin>3.0.1</version.gpg.plugin>
-    <version.jar.plugin>3.2.2</version.jar.plugin>
-    <version.javadoc.plugin>3.3.1</version.javadoc.plugin>
-    <version.nexus-staging.plugin>1.6.10</version.nexus-staging.plugin>
-    <version.resources.plugin>3.2.0</version.resources.plugin>
+    <version.jar.plugin>3.3.0</version.jar.plugin>
+    <version.javadoc.plugin>3.5.0</version.javadoc.plugin>
+    <version.nexus-staging.plugin>1.6.13</version.nexus-staging.plugin>
+    <version.resources.plugin>3.3.1</version.resources.plugin>
     <version.source.plugin>3.2.1</version.source.plugin>
-    <version.surefire.plugin>3.0.0-M5</version.surefire.plugin>
+    <version.surefire.plugin>3.0.0</version.surefire.plugin>
 
     <!-- Dependency versions -->
     <version.slf4j>1.7.36</version.slf4j>
@@ -167,8 +164,7 @@
             <showDeprecation>true</showDeprecation>
             <showWarnings>true</showWarnings>
             <encoding>${project.build.sourceEncoding}</encoding>
-            <release>${maven.compiler.release}</release>
-            <testRelease>${maven.compiler.testRelease}</testRelease>
+            <release>${jdk.min.version}</release>
           </configuration>
         </plugin>
 
@@ -275,9 +271,9 @@
           <version>${version.surefire.plugin}</version>
           <configuration>
             <trimStackTrace>false</trimStackTrace>
-            <systemProperties>
+            <systemPropertyVariables>
               <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
-            </systemProperties>
+            </systemPropertyVariables>
           </configuration>
         </plugin>
       </plugins>
