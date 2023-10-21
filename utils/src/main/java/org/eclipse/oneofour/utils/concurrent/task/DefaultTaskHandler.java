@@ -13,6 +13,7 @@
  *******************************************************************************/
 package org.eclipse.oneofour.utils.concurrent.task;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -61,7 +62,7 @@ public class DefaultTaskHandler implements TaskHandler
 
     private final Map<Long, NotifyFuture<?>> taskMap = new HashMap<Long, NotifyFuture<?>> ();
 
-    private final Random random = new Random ();
+    private final Random random = new SecureRandom ();
 
     protected long allocateId ( final NotifyFuture<?> task )
     {
